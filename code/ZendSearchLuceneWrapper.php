@@ -127,8 +127,7 @@ class ZendSearchLuceneWrapper {
 
 	$objectClass = $object->ClassName;
 
-	if ( ! $object::has_extension($objectClass,'ZendSearchLuceneSearchable') ) {
-        
+	if ( ! $objectClass::has_extension('ZendSearchLuceneSearchable') ) {
             return;
         }
 
@@ -226,7 +225,7 @@ class ZendSearchLuceneWrapper {
 
     $objectClass = $object->ClassName;
 
-    if ( ! $object::has_extension($objectClass, 'ZendSearchLuceneSearchable') ) {
+    if ( ! $objectClass::has_extension('ZendSearchLuceneSearchable') ) {
             return;
         }
         $index = self::getIndex();
@@ -396,8 +395,7 @@ class ZendSearchLuceneWrapper {
         $possibleClasses = ClassInfo::subclassesFor($className);
         $extendedClasses = array();
         foreach( $possibleClasses as $possibleClass ) {
-            //if ( $possibleClass::has_extension('ZendSearchLuceneSearchable') ) {
-            if ( Object::has_extension($possibleClass, 'ZendSearchLuceneSearchable') ) {
+            if ( $possibleClass::has_extension('ZendSearchLuceneSearchable') ) {
                 $extendedClasses[] = $possibleClass;
             }
         }
@@ -424,7 +422,7 @@ class ZendSearchLuceneWrapper {
         return $indexed;
     }
 
-    protected function getChildren($object, $indexed = array()){
+    protected static function getChildren($object, $indexed = array()){
         foreach($object->Children() as $child){
             if(!array_key_exists($child->ClassName.' '.$child->ID, $indexed)){
                 $indexed[$child->ClassName.' '.$child->ID] = array(

@@ -34,7 +34,7 @@ abstract class ZendSearchLuceneTextExtractor {
      * @param   String  $filename   Full filesystem path to the file to process.
      * @return  String  Text extracted from the file.
      */
-    abstract public static function extract($filename);
+    public static function extract($filename) {}
  
  
 }
